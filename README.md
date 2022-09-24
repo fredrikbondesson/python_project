@@ -1,4 +1,12 @@
-installs setup.py in development mode
+Setup python venv and activate
+
+`py -3.8 -m venv venv`
+
+`venv\scripts\activate`
+
+`pip install -r requirements.txt`
+
+It will install setup.py in development mode
 
 `pip install --editable .`
 
