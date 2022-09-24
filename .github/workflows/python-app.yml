@@ -38,3 +38,19 @@ jobs:
     - name: Test with pytest
       run: |
         pytest --cov --cov-report html -v test
+    - uses: khaeru/codecov-gh@v1
+      with:
+        # Token used to report checks. Required.
+        token: ${{ github.token }}
+
+        # Location of the coverage data file. Optional.
+        #
+        # Default: .coverage, in the GitHub Actions workspace directory.
+        data-file: .coverage
+
+        # Percent coverage required for the check to pass. Optional.
+        #
+        # This is a floating-point number between 0 and 100.
+        #
+        # Default: 100.0
+        threshold: 100.0
