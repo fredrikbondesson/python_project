@@ -38,6 +38,11 @@ jobs:
     - name: Test with pytest
       run: |
         pytest --cov --cov-report html -v test
+    - uses: actions/upload-artifact@v3
+      with:
+          name: coverage-artifact
+          path: htmlcov/
+
     - uses: khaeru/coverage-gh@main
       with:
         # Token used to report checks. Required.
