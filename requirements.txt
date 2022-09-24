@@ -1,0 +1,11 @@
+pytest
+pytest-black
+pytest-isort
+pytest-pylint
+pytest-mypy
+black
+isort
+pylint
+mypy
+
+-e .

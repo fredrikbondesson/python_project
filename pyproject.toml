@@ -1,0 +1,71 @@
+# [build-system]
+# requires = ["setuptools", "setuptools-scm"]
+# build-backend = "setuptools.build_meta:__legacy__" # otherwise running setup.py fails
+
+[project]
+name = "prime-number"
+description = "Module for validating prime numbers"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+version = "1.0.0"
+
+[tool.setuptools.packages.find]
+where = ["src"]  # list of folders that contain the packages (["."] by default)
+# include = ["check_prime_numbers*"]  # package names should match these glob patterns (["*"] by default)
+# exclude = ["my_package.tests*"]  # exclude packages matching these glob patterns (empty by default)
+# namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
+
+# [project.scripts]
+# my-script = "check_prime_numbers:module:function"
+
+[tool.pytest.ini_options]
+testpaths = [
+    "test",
+    "src",
+]
+
+[tool.black]
+target-version = ["py38"]
+# include = '\.pyi?$'
+# exclude = '(app1\.py|app2\.py)'
+# exclude = '''
+# (
+#   /(
+#     | \.mypy_cache
+#     | \.venv
+#     | build
+#     | dist
+#   )/
+# )
+# '''
+
+[tool.isort]
+py_version = "38"
+profile = "black"
+# skip = ["conftest.py", "quad_application.py", "sd_application.py"]
+
+[tool.pylint.messages_control]
+recursive = true
+max-line-length = 88
+disable = [
+    "missing-docstring", "consider-using-f-string", "line-too-long", "unspecified-encoding"
+]
+# ignore-paths = ["setup.py", "venv"]
+
+[tool.pylint.basic]
+good-names = ["_", "nr"]
+variable-rgx = "[a-z_][a-z0-9_]*$"
+# inlinevar-rgx = "[a-z_][a-z0-9_]*$"
+# generated-members="(requests\\.)?codes\\.(ok|unauthorized|forbidden|not_found),"
+
+[tool.mypy]
+check_untyped_defs = true
+# ignore_missing_imports = true
+# exclude = ["^setup\\.py$", "venv"]
+
+[[tool.mypy.overrides]]
+module = [
+    'setuptools.*',
+]
+ignore_missing_imports = true
