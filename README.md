@@ -12,7 +12,7 @@ It will install setup.py in development mode
 
 Run all tests including pylint/black/isort/mypy
 
-`pytest --pylint --black --isort --mypy --cache-clear -v`
+`pytest --pylint --black --isort --mypy --cov --cov-report html --cache-clear -v`
 
 
     "python.formatting.provider": "black",

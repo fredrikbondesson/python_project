@@ -7,4 +7,7 @@
         "source.organizeImports": true
     },
     "python.analysis.indexing": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.mypyEnabled": true,
 }

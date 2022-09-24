@@ -1,31 +1,39 @@
 import argparse
 import sys
-from typing import List
+from typing import List, NamedTuple
 
 
-def is_prime(nr) -> bool:
-    if nr <= 3:
-        return nr > 1
+class PrimeNumber(NamedTuple):
+    number: int
+    is_prime: bool
 
-    if nr % 2 == 0 or nr % 3 == 0:
+
+def is_prime(num) -> bool:
+    if num in [0, 1]:
         return False
-
-    sqrt = int(nr**0.5) + 1
-
-    for divisor in range(5, sqrt, 2):
-        if nr % divisor == 0:
-            return False
+    if num > 1:
+        for i in range(2, num):
+            if (num % i) == 0:
+                return False
 
     return True
 
 
-def check_numbers(numbers: List[int]) -> None:
+def check_numbers(numbers: List[int]) -> List[PrimeNumber]:
+    result = []
     for number in numbers:
+
         if is_prime(number):
             flag = "is"
+            res = PrimeNumber(number, True)
         else:
             flag = "is not"
+            res = PrimeNumber(number, False)
+
+        result.append(res)
         print("%d %s a prime number." % (number, flag))
+
+    return result
 
 
 def main(args):
